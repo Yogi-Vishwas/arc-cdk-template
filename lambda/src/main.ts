@@ -1,8 +1,8 @@
-import {App} from 'cdktf';
+import { App } from 'cdktf';
 import * as dotenv from 'dotenv';
 import * as dotenvExt from 'dotenv-extended';
-import {resolve} from 'path';
-import {LambdaStack, MigrationStack} from './common';
+import { resolve } from 'path';
+import { LambdaStack, MigrationStack } from './common';
 
 dotenv.config();
 dotenvExt.load({
@@ -10,6 +10,8 @@ dotenvExt.load({
   errorOnMissing: true,
   includeProcessEnv: true,
 });
+
+const lambdaEnvVar = {};
 
 const app = new App();
 
@@ -69,19 +71,7 @@ new LambdaStack(app, 'lambda', {
   },
   memorySize: 256,
   timeout: 30,
-  envVars: {
-    DB_HOST: process.env.DB_HOST || '',
-    DB_PORT: process.env.DB_PORT || '',
-    DB_USER: process.env.DB_USER || '',
-    DB_PASSWORD: process.env.DB_PASSWORD || '',
-    DB_DATABASE: process.env.DB_DATABASE || '',
-    DB_SCHEMA: process.env.DB_SCHEMA || '',
-    JWT_SECRET: process.env.JWT_SECRET || '',
-    JWT_ISSUER: 'sourcefuse',
-    PORT: '3005',
-    LOG_LEVEL: 'info',
-    DB_CONNECTOR: 'postgresql',
-  },
+  envVars: lambdaEnvVar,
   customDomainName: {
     domainName: process.env.DOMAIN_NAME || '',
     hostedZoneId: process.env.HOSTED_ZONE_ID || '',
