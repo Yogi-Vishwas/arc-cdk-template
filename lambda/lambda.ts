@@ -1,5 +1,5 @@
 import { APIGatewayEvent, APIGatewayProxyEvent, Context } from "aws-lambda";
-import { app_class_name_placeholder } from "./application";
+app_import_placeholder
 const serverlessExpress = require("@vendia/serverless-express");
 
 export * from "./application";
