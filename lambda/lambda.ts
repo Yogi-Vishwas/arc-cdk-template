@@ -1,5 +1,5 @@
 import { APIGatewayEvent, APIGatewayProxyEvent, Context } from "aws-lambda";
-app_import_placeholder
+{{app_import_placeholder}}
 const serverlessExpress = require("@vendia/serverless-express");
 
 export * from "./application";
@@ -14,7 +14,7 @@ export async function setup(event: APIGatewayEvent, context: Context) {
       },
     },
   };
-  const app = new app_class_name_placeholder(config);
+  const app = new {{app_class_name_placeholder}}(config);
   await app.boot();
   const requestHandler = app.restServer.requestHandler;
   serverlessApp = serverlessExpress({ app: requestHandler });
