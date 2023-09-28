@@ -6,12 +6,12 @@ import { LambdaStack, MigrationStack } from './common';
 
 dotenv.config();
 dotenvExt.load({
-  schema: '.env.example',
+  schema: '.env.schema',
   errorOnMissing: true,
   includeProcessEnv: true,
 });
 
-const lambdaEnvVar = {};
+const lambdaEnvVariables = {};
 
 const app = new App();
 
